@@ -4,7 +4,7 @@ int main()
 {
     int num,originalNum,remainder,result=0;
     cin>>num;
-    originalNum=num;
+    originalNum=num;37
     while(originalNum !=0)
     {
         remainder=originalNum%10;
