@@ -1,21 +1,35 @@
 #include<iostream>
+#include<string.h>
 using namespace std;
-int main()
+int countDecoding(char *digit,int n)
 {
-    int n1,n2;
-    cin>>n1>>n2;
-    while(n1 != n2)
+    int decodings[n+1];
+    decodings[0]=1;
+    decodings[1]=1;
+    for(int i=1;i<=n;i++)
     {
-        if(n1>n2)
+        int q=digit[i]-48;
+        int p=digit[i-1]-48;
+        if(q>0 && q<=26)
         {
-            n1-=n2;
+            decodings[i+1]=decodings[i];
 
         }
-        else
+        if((q+p*10)>0 && (q+p*10)<=26)
+
         {
-            n2-=n1;
+           decodings[i+1]+=decodings[i-1];
         }
     }
-    cout<<n1;
+    return decodings[n];
+}
+
+int main()
+{
+
+    char digit[20];
+  cin>>digit;
+    int n=strlen(digit);
+    cout<<digit<<endl<<countDecoding(digit,n);
     return 0;
 }
